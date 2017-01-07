@@ -38,5 +38,14 @@ node {
       } else {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore site/)
       }
+	  
+	  publishHTML (target: [
+      allowMissing: false,
+      alwaysLinkToLastBuild: false,
+      keepAll: true,
+      reportDir: 'target/site',
+      reportFiles: 'index.html',
+      reportName: "Site Report"
+    ])
    }
 }
