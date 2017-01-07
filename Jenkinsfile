@@ -39,7 +39,7 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore site/)
       }
 	  
-	  step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: '**/target/checkstyle-result.xml', unstableTotalAll:'0',unhealthy:'100', healthy:'100'])
+	  step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher', pattern: '**/target/checkstyle-result.xml', unstableTotalAll:'0',unhealthy:'30', healthy:'10'])
 	  step([$class: 'PmdPublisher', pattern: '**/target/pmd.xml'])
 	  step([$class: 'FindBugsPublisher', pattern: '**/findbugsXml.xml'])
 	  
