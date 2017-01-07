@@ -28,4 +28,15 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean test/)
       }
    }
+   stage('StaticQualityCheck') {
+      junit '**/target/surefire-reports/TEST-*.xml'
+      archive 'target/*.jar'
+      
+       // Run the maven build
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore site"
+      } else {
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore site/)
+      }
+   }
 }
